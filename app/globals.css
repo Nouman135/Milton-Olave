@@ -1,0 +1,113 @@
+/* Site additions on top of the Webflow export (webflow.css).
+   These replace what the Webflow runtime used to do: scroll-in reveals (IX2), navbar and dropdown
+   transitions, and the logo marquee that lived in an inline <style> on the home page. */
+
+/* Logo marquee */
+.items-holder {
+  animation: moveSlideshow 55s linear infinite;
+}
+.items-holder:hover {
+  animation-play-state: paused;
+}
+@keyframes moveSlideshow {
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Scroll-into-view reveals: hidden until components/ScrollReveal.tsx animates them in.
+   `translate` is used instead of `transform` so elements keep any transform of their own. */
+[data-anim] {
+  opacity: 0;
+}
+[data-anim='slide-in-bottom'] {
+  translate: 0 100px;
+}
+[data-anim='slide-in-top'] {
+  translate: 0 -100px;
+}
+[data-anim='slide-in-left'] {
+  translate: -100px 0;
+}
+[data-anim='slide-in-right'] {
+  translate: 100px 0;
+}
+[data-anim='from-up'] {
+  translate: 0 -15px;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-anim] {
+    opacity: 1;
+    translate: none;
+  }
+}
+
+/* Navbar 1 [Open Menu] / [Close Menu]: hamburger turns into a cross */
+.rl_menu-icon_line-top,
+.rl_menu-icon_line-bottom {
+  transition: transform 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+}
+.rl_menu-icon_line-middle {
+  transition: width 0.2s cubic-bezier(0.86, 0, 0.07, 1) 0.4s;
+}
+.w-nav-button.w--open .rl_menu-icon_line-top {
+  transform: translateY(8px) rotate(-45deg);
+}
+.w-nav-button.w--open .rl_menu-icon_line-bottom {
+  transform: translateY(-8px) rotate(45deg);
+}
+.w-nav-button.w--open .rl_menu-icon_line-middle {
+  width: 0;
+  transition-delay: 0s;
+}
+
+/* Navbar 2 Dropdown [Open] / [Close] */
+.rl-dropdown-icon {
+  transition: transform 0.3s ease;
+}
+.w-dropdown-toggle.w--open .rl-dropdown-icon {
+  transform: rotate(180deg);
+}
+.rl_navbar2_dropdown-list.w--open {
+  animation: rl-dropdown-in 0.3s ease;
+}
+@keyframes rl-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media screen and (max-width: 991px) {
+  .rl_navbar2_dropdown-list.w--open {
+    animation: rl-dropdown-in-tablet 0.3s ease;
+  }
+  @keyframes rl-dropdown-in-tablet {
+    from {
+      max-height: 0;
+    }
+    to {
+      max-height: 12rem;
+    }
+  }
+  /* Webflow's "default" nav animation drops the menu down over 400ms */
+  .rl_navbar1_menu[data-nav-menu-open] {
+    animation: w-nav-drop 0.4s ease;
+  }
+  @keyframes w-nav-drop {
+    from {
+      clip-path: inset(0 0 100% 0);
+    }
+    to {
+      clip-path: inset(0);
+    }
+  }
+}
+
+/* Lightbox backdrop fades in once mounted (components/LightboxLink.tsx) */
+.w-lightbox-backdrop {
+  transition: opacity 0.3s ease;
+}

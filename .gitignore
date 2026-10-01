@@ -8,6 +8,11 @@ build/
 out/
 .astro/
 
+# Next.js / TypeScript
+next-env.d.ts
+*.tsbuildinfo
+*.pem
+
 # Environment / secrets
 .env
 .env.*
