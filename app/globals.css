@@ -47,8 +47,10 @@
 .rl_menu-icon_line-bottom {
   transition: transform 0.6s cubic-bezier(0.86, 0, 0.07, 1);
 }
+/* Webflow shrank the middle bar's width to 0; the icon is centre-aligned, so a centred scaleX looks the same. */
 .rl_menu-icon_line-middle {
-  transition: width 0.2s cubic-bezier(0.86, 0, 0.07, 1) 0.4s;
+  transform-origin: center;
+  transition: transform 0.2s cubic-bezier(0.86, 0, 0.07, 1) 0.4s;
 }
 .w-nav-button.w--open .rl_menu-icon_line-top {
   transform: translateY(8px) rotate(-45deg);
@@ -57,7 +59,7 @@
   transform: translateY(-8px) rotate(45deg);
 }
 .w-nav-button.w--open .rl_menu-icon_line-middle {
-  width: 0;
+  transform: scaleX(0);
   transition-delay: 0s;
 }
 
