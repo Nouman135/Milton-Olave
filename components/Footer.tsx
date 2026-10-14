@@ -145,9 +145,9 @@ export default function Footer() {
           <div className="footer-last">
             <div className="div-by">
               <div className="rl_footer1_credit-text">
-                {'Website by '}
-                <a href="https://valeriia.webflow.io/" target="_blank" className="link-by">
-                  Valeriia Nikolaieva
+                {'Developed by '}
+                <a href="https://dfygrowthengine.com" target="_blank" rel="noopener" className="link-by">
+                  Umair and Wajid
                 </a>
               </div>
             </div>
@@ -170,7 +170,7 @@ export default function Footer() {
             </div>
             <div className="rl_footer1_bottom-wrapper">
               <div className="rl_footer1_credit-text">
-                Copyright © 2025 Empowerment Leadership Corp. All Rights Reserved
+                Copyright © 2026 Empowerment Leadership Corp. All Rights Reserved
               </div>
             </div>
           </div>
