@@ -18,6 +18,9 @@ next-env.d.ts
 .env.*
 !.env.example
 
+# /brag launch-video output (composition, renders, share copy)
+brag-output/
+
 # Deploy tooling
 .vercel/
 .netlify/
